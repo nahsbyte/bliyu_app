@@ -1,0 +1,41 @@
+name: flutter_setup
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=2.19.0 <3.0.0'
+
+dependencies: 
+  get: 4.6.5
+  loading_indicator: ^3.0.2
+  get_storage: ^2.0.3
+  google_fonts:
+  overlay_support: ^2.0.1
+  pin_code_fields: ^7.4.0
+  image_picker: ^0.8.5+3
+  file_picker:
+  permission_handler: ^10.0.0
+  image_cropper: ^3.0.0
+  webview_flutter: ^3.0.4
+  connectivity_plus: ^4.0.2
+  lottie: ^2.3.2
+  flutter_svg:
+  url_launcher: 
+
+
+
+  flutter: 
+    sdk: flutter
+  flutter_localization: ^0.1.13
+
+dev_dependencies: 
+  flutter_lints: 2.0.1
+  flutter_test: 
+    sdk: flutter
+
+flutter: 
+  uses-material-design: true
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/json/
