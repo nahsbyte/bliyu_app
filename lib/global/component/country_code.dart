@@ -1,28 +1,3 @@
-/*
- * Copyright (c) 2023 Technource. All rights reserved.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in all
- * copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- * SOFTWARE.
- *
- *  Email: support@technource.com
- *  Developed by Technource (https://www.technource.com)
- */
-
 import 'package:flutter_setup/global/extention/string_extensions.dart';
 import 'package:flutter_setup/global/utils/logger.dart';
 import 'package:get/get.dart';
@@ -51,99 +26,96 @@ class CountryCodePicker {
     Get.bottomSheet(
         FractionallySizedBox(
             heightFactor: 0.9,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                    decoration: BoxDecoration(
-                        color: Get.theme.colorScheme.secondary,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(15),
-                            topRight: Radius.circular(15))),
-                    child: Center(
-                        child: Text(R.strings.ksSelectCountryCode,
-                            style: Get.textTheme.headlineSmall!
-                                .merge(const TextStyle(color: Colors.white))))),
-                Card(
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0),
-                    ),
-                    margin: const EdgeInsets.all(15),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Expanded(
-                              child: ListTile(
-                                  leading: Icon(Icons.search,
-                                      color: Get.theme.primaryColor),
-                                  horizontalTitleGap: 0.0,
-                                  title: TextField(
-                                      cursorColor: Get.theme.primaryColor,
-                                      controller: searchController,
-                                      focusNode: searchFocusNode,
-                                      style: Get.textTheme.bodyMedium!.merge(
-                                          TextStyle(
-                                              color: Get.theme.primaryColor)),
-                                      decoration: InputDecoration(
-                                          hintText: R.strings.ksSearch,
-                                          border: InputBorder.none,
-                                          hintStyle: Get.textTheme.bodyMedium!
-                                              .merge(TextStyle(
-                                                  color:
-                                                      Get.theme.primaryColor))),
-                                      onChanged: onSearchTextChanged),
-                                  dense: true))
-                        ])),
-                Expanded(
-                    child: Obx(() => searchResult.isNotEmpty ||
-                            countryList.isNotEmpty
-                        ? searchResult.isNotEmpty
-                            ? Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: ListView.separated(
-                                    separatorBuilder:
-                                        (BuildContext context, int index) {
-                                      return Divider(
-                                          thickness: 1,
-                                          color: AppColors.kcPrimaryColor
-                                              .withOpacity(0.2));
-                                    },
-                                    itemCount: searchResult.length,
-                                    shrinkWrap: true,
-                                    physics:
-                                        const AlwaysScrollableScrollPhysics(),
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return countryItem(
-                                          country: searchResult[index]);
-                                    })
-                              )
-                            : Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 20.0),
-                                child: ListView.separated(
-                                    separatorBuilder:
-                                        (BuildContext context, int index) {
-                                      return Divider(
-                                          thickness: 1,
-                                          color: AppColors.kcPrimaryColor
-                                              .withOpacity(0.2));
-                                    },
-                                    shrinkWrap: true,
-                                    physics:
-                                        const AlwaysScrollableScrollPhysics(),
-                                    itemCount: countryList.length,
-                                    itemBuilder:
-                                        (BuildContext context, int index) {
-                                      return countryItem(
-                                          country: countryList[index]);
-                                    }))
-                        : Center(child: Text(R.strings.ksNoDataFound))))
-              ]
-            )),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                  padding: const EdgeInsets.symmetric(vertical: 15),
+                  decoration: BoxDecoration(
+                      color: Get.theme.colorScheme.secondary,
+                      borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15))),
+                  child: Center(
+                      child: Text(R.strings.ksSelectCountryCode,
+                          style: Get.textTheme.headlineSmall!
+                              .merge(const TextStyle(color: Colors.white))))),
+              Card(
+                  elevation: 5,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(15.0),
+                  ),
+                  margin: const EdgeInsets.all(15),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                            child: ListTile(
+                                leading: Icon(Icons.search,
+                                    color: Get.theme.primaryColor),
+                                horizontalTitleGap: 0.0,
+                                title: TextField(
+                                    cursorColor: Get.theme.primaryColor,
+                                    controller: searchController,
+                                    focusNode: searchFocusNode,
+                                    style: Get.textTheme.bodyMedium!.merge(
+                                        TextStyle(
+                                            color: Get.theme.primaryColor)),
+                                    decoration: InputDecoration(
+                                        hintText: R.strings.ksSearch,
+                                        border: InputBorder.none,
+                                        hintStyle: Get.textTheme.bodyMedium!
+                                            .merge(TextStyle(
+                                                color:
+                                                    Get.theme.primaryColor))),
+                                    onChanged: onSearchTextChanged),
+                                dense: true))
+                      ])),
+              Expanded(
+                  child: Obx(() => searchResult.isNotEmpty ||
+                          countryList.isNotEmpty
+                      ? searchResult.isNotEmpty
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: ListView.separated(
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return Divider(
+                                        thickness: 1,
+                                        color: AppColors.kcPrimaryColor
+                                            .withOpacity(0.2));
+                                  },
+                                  itemCount: searchResult.length,
+                                  shrinkWrap: true,
+                                  physics:
+                                      const AlwaysScrollableScrollPhysics(),
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return countryItem(
+                                        country: searchResult[index]);
+                                  }))
+                          : Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20.0),
+                              child: ListView.separated(
+                                  separatorBuilder:
+                                      (BuildContext context, int index) {
+                                    return Divider(
+                                        thickness: 1,
+                                        color: AppColors.kcPrimaryColor
+                                            .withOpacity(0.2));
+                                  },
+                                  shrinkWrap: true,
+                                  physics:
+                                      const AlwaysScrollableScrollPhysics(),
+                                  itemCount: countryList.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return countryItem(
+                                        country: countryList[index]);
+                                  }))
+                      : Center(child: Text(R.strings.ksNoDataFound))))
+            ])),
         elevation: 20.0,
         isScrollControlled: true,
         enableDrag: true,
